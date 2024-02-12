@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}View Posts{% endblock %}
+
+{% block header %}View Posts{% endblock %}
+
+{% block content %}
+    {% for post in result %}
+        {{ post.postTitle }} <br />
+        {{ post.postContent }}<br />
+        <a href="{% url 'updatePost' post.pk %}">Update</a>
+        <a href="{% url 'deletePost' post.pk %}">Delete</a>
+        <hr />
+    {% endfor %}
+{% endblock %}
+
+
+    

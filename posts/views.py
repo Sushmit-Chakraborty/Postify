@@ -2,11 +2,14 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from .forms import PostForm
 from .models import Posts
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+@login_required(login_url='login')
 def displayPosts(request):
     resultPost = Posts.objects.all()
     return render(request,"displayPost.html",{"result":resultPost})
 
+@login_required(login_url='login')
 def createPosts(request):
     if request.method == "POST":
         form = PostForm(request.POST)
